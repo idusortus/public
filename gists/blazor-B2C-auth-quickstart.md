@@ -99,7 +99,9 @@ dotnet new blazorwasm -au IndividualB2C --aad-b2c-instance "{AAD B2C INSTANCE}" 
 
 
 # Testing
-- restore project
+
+
+- dotnet restore all projects
 - force app to use localhost:5001
 ProjectRoot/Server/Properties/launchSettings.json **and** ProjectRoot/Client/Properties/launchSettings.json
 - Change as shown:
@@ -113,14 +115,7 @@ ProjectRoot/Server/appsettings.json, Add CallbackPath after SignUpSignIn (which 
 "CallbackPath": "/signin-oidc"
 ```
 
-
-# Debugging 
-first run, error @ msal popup:
-
-```
-https://localhost:5001/authentication/login-callback#error=redirect_uri_mismatch&error_description=AADB2C90006%3a+The+redirect+URI+%27https%3a%2f%2flocalhost%3a7187%2fauthentication%2flogin-callback%27+provided+in+the+request+is+not+registered+for+the+client+id+ (...)
-```
-
-
-
+- cd to /Server
+dotnet run
+click on the links in terminal
 
