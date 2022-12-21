@@ -1,3 +1,4 @@
+Notes while following along with:
 https://code-maze.com/azure-active-directory-b2c-with-blazor-webassembly-hosted-apps/
 
 1. new b2c tenant
@@ -7,18 +8,25 @@ https://code-maze.com/azure-active-directory-b2c-with-blazor-webassembly-hosted-
   - BlazorB2C (Server)
 > We are not modifying the Redirect URI option because we don’t need it for the server app. Also, we have to grant admin consent, which is checked by default.
 
-    Application (client) ID ... for the SERVER Blazor component
-    ```
-    <Your GUID Here>
-    ```    
-    Object ID
-    ```
-    <Your GUID Here>
-    ```
-    Directory (tenant) ID
-    ```
-    <Your GUID Here>
-    ```
+
+
+
+  Application (client) ID ... for the SERVER Blazor component
+  ```  
+  <Your GUID>
+  ```    
+
+  Object ID
+  ```
+  <Your GUID>
+  ```  
+
+  Directory (tenant) ID
+  ```
+  <Your GUID>
+  ```  
+
+
   - Endpoints
     Azure AD B2C OAuth 2.0 token endpoint (v2)
     https://<yourTenantName>.b2clogin.com/fsblazor.onmicrosoft.com/<policy-name>/oauth2/v2.0/token
@@ -38,21 +46,26 @@ https://code-maze.com/azure-active-directory-b2c-with-blazor-webassembly-hosted-
 4. Register Client Application
    - BlazorB2C Client
    - Redirect - SPA
+
      ``` 
      https://localhost:5001/authentication/login-callback
-     ```
+     ```  
+
     Application (client) ID 
-    ```
+    ```  
     <Your GUID>
     ```    
+
     Object ID
     ```
     <Your GUID>
-    ```
+    ```  
+      
     Directory (tenant) ID
     ```
     <Your GUID>
-    ```
+    ```  
+
   - Authentication (checkboxes)
 >  Now, to confirm the client app registration, we can navigate to the Authentication page:
 >  Since we are using the Authorization Code flow (PKCE), we are not going to check any of these options.
@@ -83,8 +96,7 @@ dotnet new blazorwasm -au IndividualB2C --aad-b2c-instance "{AAD B2C INSTANCE}" 
   --client-id "{CLIENT APP CLIENT ID}" --default-scope "{DEFAULT SCOPE}" --domain "{TENANT DOMAIN}" -ho -o {Server APP NAME} -ssp "{SIGN UP OR SIGN IN POLICY}"
 
 ```
-dotnet new blazorwasm -au IndividualB2C --aad-b2c-instance "https://fsblazor.b2clogin.com/" --api-client-id "f1aef67e-e5f1-4e75-9814-cfb6515dafbb" --app-id-uri "f1aef67e-e5f1-4e75-9814-cfb6515dafbb" --client-id "239d4026-a458-455b-afef-c32ca11eb448" --default-scope "BlazorB2C.Access" --domain "fsblazor.onmicrosoft.com" -ho -o "BlazorB2C" -ssp "B2C_1_signupsignin"
-```
+
 
 # Testing
 - restore project
