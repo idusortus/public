@@ -9,18 +9,19 @@
   ### New Registration (API)  
   Name: Z-API  
   Leave 'Accounts in any identity provider....' checked    
-  Redirect URI > SPA > https://jwt.ms  && https://oauth.pstmn.io/v1/callback (for postman testing)
+
   Permissions: Leave Grant admin consent to openid and offline_access permissions checked  
   [Register]  
   - Record Application (client ID)
-  3f51546f-f135-41a4-9667-510709bf5f9f
+  e366e1bb-b4ba-49a1-86d6-eac06f60cbbb
   #### Expose an API
   - Add a scope 
     - (first time, set the Application ID URI to 'api'  )
     - replace random GUID with **api**
-    - Should be similar to https://YOURDOMAIN/api/
+    - Should be similar to https://YOURDOMAIN/api/ 
   - Add a scope
-    - weather.read
+    - access_as_user  **can change this or add scopes later, this is what the default dotnet webapi sets up initially**
+    - longform: https://spinachpizza.onmicrosoft.com/api/access_as_user
     - Fill in text boxes with whatever
     - Leave 'state' as enabled
     - [ Add Scope ]
@@ -38,13 +39,15 @@
   + Z-SPA
   + Accounts in any identity provider
   + SPA: https://oauth.pstmn.io/v1/callback
-  + Check the box for grant
+  > Redirect URI > SPA > https://jwt.ms  && https://localhost/authentication/login-callback && https://oauth.pstmn.io/v1/callback (for postman testing)
+  + Leave Boxes Unchecked for this example
   + [REGISTER]
-  + Add permission
+  + API Permissions > Add permission
     + MY APis
     + ZAPI
-    + weather.read
-    + ClientID:  31aadc1e-cdbf-42aa-b7b2-3b0d51cb0594
+    + access_as_user
+    + - Grant admin consent
+    + ClientID:  0c275dcc-b12c-45be-a8a9-4bba2cd959ca
   
   ### Create a sign-in/sign-up flow
   
@@ -107,6 +110,16 @@ For more info see https://aka.ms/dotnet-template-ms-identity-platform
   },
   "AllowedHosts": "*"
 }
-
   ```
   
+
+### Postman Setup
+
+New Collection
+- Authorization type: OAuth 2.0
+- Grant Type: Authorization Code (With PKCE)
+- Callback URL: https://oauth.pstmn.io/v1/callback
+- Auth URL:
+- Access Token URL: https://spinachpizza.b2clogin.com/spinachpizza.onmicrosoft.com/b2c_1_susi/oauth2/v2.0/token
+- Client ID: 
+- Scope: access_as_user
